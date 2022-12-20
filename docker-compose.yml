@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  postgres:
+    container_name: kaipostgres
+    hostname: postgres
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    command: ["/usr/lib/postgresql/14/bin/postgres", "-D", "/var/lib/postgresql/14/main", "-c", "config_file=/etc/postgresql/14/main/postgresql.conf"]
+  
+  python:
+    container_name: kaipython
+    hostname: python
+    image: python:latest
+    volumes:
+      - ./scripts:/mnt/share
+    ports:
+      - 8000:8000
+    command: ["/bin/bash", "-c", "tail -f /dev/null"]

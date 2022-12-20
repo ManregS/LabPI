@@ -1,0 +1,15 @@
+version: "3.7"
+services:
+  postgres:
+    container_name: kaipostgres
+    hostname: postgres
+    image: postgres:latest
+    build:
+      context: ./postgres
+
+  python:
+    container_name: kaipython
+    hostname: python
+    image: python:latest
+    build:
+      context: ./python   
